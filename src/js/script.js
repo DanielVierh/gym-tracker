@@ -8,3 +8,16 @@ window.addEventListener("scroll", ()=>{
         maintitle.classList.remove("sticky-top");
     }
 });
+
+
+function gotoHome() {
+    window.location = "index.html";
+}
+
+function gotoStatistic() {
+    window.location = "statistic.html";
+}
+
+function gotoNewExercise() {
+    window.location = "newExercise.html";
+}

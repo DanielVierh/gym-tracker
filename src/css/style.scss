@@ -76,6 +76,7 @@ section {
     z-index: 10;
     border-radius: 20px 20px 0 0;
     border: 1px solid $color-teal;
+    
 
 
     .bottomButton {
@@ -87,5 +88,11 @@ section {
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
+        transition: all .5s ease;
+        &:hover {
+            box-shadow: 0 0 20px turquoise;
+            transform: scale(1.1);
+        }
     }
 }
