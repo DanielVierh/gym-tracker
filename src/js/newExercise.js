@@ -15,6 +15,7 @@ class Exercise {
     }
 }
 
+let exerciseObjArray = [];
 let exercises = [];
 
 
@@ -35,6 +36,10 @@ function saveNewExercise() {
         if(document.getElementById("inpExercise_Name").value !== " ") {
             exercisename = document.getElementById("inpExercise_Name").value;
             inputdataIsOk = true;
+            if(exercises.includes(exercisename)) {
+                alert("Die Übung existiert bereits")
+                inputdataIsOk = false;
+            }
         }
     }else {
         alert("Es muss mindestens ein Name vergeben werden")
@@ -81,9 +86,12 @@ function save_LocalStorage() {
 function load_LocalStorage() {
     if (localStorage.getItem('stored_Gymtracker_Data') !== null) {
         storedObj = JSON.parse(localStorage.getItem('stored_Gymtracker_Data'));
-        console.log('Daten für new Exercise geladen');
+        console.log('Daten geladen');
         try {
-            exercises = storedObj.exercises;
+            exerciseObjArray = storedObj.exercises;
+            for(let i = 0; i < exerciseObjArray.length; i++) {
+                exercises.push(exerciseObjArray[i].name)
+            }
         } catch (err) {
             console.log(err);
         }
