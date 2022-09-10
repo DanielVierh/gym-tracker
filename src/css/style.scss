@@ -27,6 +27,8 @@ body {
 
 main {
     padding: 0 0 70px 0;
+    display: flex;
+    flex-direction: column;
 
     h1 {
         color: aqua;
@@ -48,10 +50,15 @@ main {
 
 
 
-section {
-    margin: 30px auto;
+.exercise {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin: 20px auto;
     background-color: rgb(24, 27, 35);
-    width: 85%;
+    width: 30%;
+    height: 40px;
+    text-decoration: none;
     border-radius: 15px;
     color: white;
     padding: 10px;
@@ -59,6 +66,11 @@ section {
     border: 1px solid $color-teal;
     letter-spacing: 3px;
     text-align: right;
+    cursor: pointer;
+
+    span {
+        margin-left: 10px;
+    }
 }
 
 
@@ -76,7 +88,7 @@ section {
     z-index: 10;
     border-radius: 20px 20px 0 0;
     border: 1px solid $color-teal;
-    
+
 
 
     .bottomButton {

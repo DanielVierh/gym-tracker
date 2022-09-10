@@ -1,6 +1,19 @@
-let storeObj = {
+
+
+let storedObj = {
     exercises: [],
     statistics: []
+}
+
+class Exercise {
+    constructor(name, weight, satz, wiederh, traintime, id) {
+        this.name = name;
+        this.weight = weight;
+        this.satz = satz;
+        this.wiederh = wiederh;
+        this.traintime = traintime;
+        this.id = id;
+    }
 }
 
 
@@ -29,31 +42,22 @@ function gotoNewExercise() {
 }
 
 
-function load_LocalStorage() {
+function save_LocalStorage() {
     localStorage.setItem(
-        'stored_IntervallObj',
-        JSON.stringify(intervalEventObject),
+        'stored_Gymtracker_Data',
+        JSON.stringify(storedObj),
     );
 }
 
-function save_LocalStorage() {
-    if (localStorage.getItem('stored_IntervallObj') !== null) {
-        //@ts-ignore
-        intervalEventObject = JSON.parse(localStorage.getItem('stored_IntervallObj'),
+function load_LocalStorage() {
+    if (localStorage.getItem('stored_Gymtracker_Data') !== null) {
+        intervalEventObject = JSON.parse(localStorage.getItem('stored_Gymtracker_Data'),
         );
-        fastingChangeButton!.innerText = `${intervalEventObject.fastingTime}:${intervalEventObject.eatTime}`;
+        // fastingChangeButton!.innerText = `${intervalEventObject.fastingTime}:${intervalEventObject.eatTime}`;
         try {
-            waterButton!.innerText = `${intervalEventObject.water.toFixed(
-                2,
-            )} L`;
+            // waterButton!.innerText = `${intervalEventObject.water.toFixed( 2)} Liter`;
         } catch (err) {
-            // console.log(err);
-            intervalEventObject.water = 0;
-            waterButton!.innerText = `${intervalEventObject.water.toFixed(
-                2,
-            )} L`;
+            console.log(err);
         }
+    }
 }
-
-
-

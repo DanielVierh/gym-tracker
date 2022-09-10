@@ -18,6 +18,13 @@ body {
 
 main {
   padding: 0 0 70px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 main h1 {
@@ -39,10 +46,21 @@ main h1 {
   text-shadow: 0 0 10px rgba(5, 217, 250, 0.481);
 }
 
-section {
-  margin: 30px auto;
+.exercise {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px auto;
   background-color: #181b23;
-  width: 85%;
+  width: 30%;
+  height: 40px;
+  text-decoration: none;
   border-radius: 15px;
   color: white;
   padding: 10px;
@@ -51,6 +69,11 @@ section {
   border: 1px solid rgba(5, 217, 250, 0.481);
   letter-spacing: 3px;
   text-align: right;
+  cursor: pointer;
+}
+
+.exercise span {
+  margin-left: 10px;
 }
 
 .stickyBottomNav {
