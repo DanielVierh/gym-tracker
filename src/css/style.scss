@@ -117,6 +117,7 @@ main {
     right: 10px;
     font-size: 2em;
     color: $color-Primary;
+    cursor: pointer;
 }
 
 
@@ -131,18 +132,21 @@ h2 {
 
         p {
             display: flex;
-            justify-content: space-between;
+            justify-content: end;
             padding: 20px;
             margin-top: 20px;
+
         }
         label {
             color: $color-Secondary;
             letter-spacing: 3px;
+            margin: 0 auto;
         }
 
         input {
+            margin: 0 auto;
             width: 150px;
-            border-radius: 10px;
+            border-radius: 5px;
             height: 20px;
             outline: none;
             text-align: center;
@@ -164,3 +168,8 @@ h2 {
         }
     }
 }
+
+
+// .button {
+
+// }

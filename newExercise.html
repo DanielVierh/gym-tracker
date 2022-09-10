@@ -15,25 +15,25 @@
         <form>
             <p>
                 <label>Übungsbezeichnung:</label>
-                <input type="text" name="" id="">
+                <input type="text" id="inpExercise_Name" required>
             </p>
 
             <p>
                 <label>Trainingsgewicht:</label>
-                <input type="number" name="" id="">
+                <input type="number" id="inpExercise_Weight">
             </p>
 
             <p>
                 <label>Anzahl Sätze:</label>
-                <input type="number" name="" id="">
+                <input type="number" id="inpExercise_Sets">
             </p>
 
             <p>
                 <label>Anzahl Wiederholungen:</label>
-                <input type="number" name="" id="">
+                <input type="number" id="inpExercise_Repeats">
             </p>
 
-            <div class="submitButton">Speichern</div>
+            <div class="submitButton" onclick="saveNewExercise()">Speichern</div>
 
         </form>
     </section>
@@ -45,5 +45,6 @@
         <div class="bottomButton" onclick="gotoNewExercise()"><i class="fa-solid fa-square-plus"></i></div>
     </div>
     <script src="src/js/script.js"></script>
+    <script src="src/js/newExercise.js"></script>
 </body>
 </html>

@@ -1,13 +1,13 @@
 const trainingswrapper = document.getElementById('trainingswrapper');
 
-// ! Später durch Local Storage Eintrag ersetzen
-const exercises = [
-    'Liegestütze',
-    'Hantelcurls',
-    'Situps',
-    'Schulterpresse',
-    'Planks',
-];
+let storedObj = {
+    clickedExercise: 'none',
+    exercises: [],
+    statistics: []
+}
+
+let exerciseObjArray = [];
+let exercises = [];
 
 window.onload = init();
 
@@ -32,19 +32,33 @@ function loadExercise() {
 }
 
 function save_LocalStorage() {
+    console.log(storedObj);
     localStorage.setItem('stored_Gymtracker_Data', JSON.stringify(storedObj));
+    console.log('Daten wurden gespeichert');
 }
 
 function load_LocalStorage() {
     if (localStorage.getItem('stored_Gymtracker_Data') !== null) {
-        intervalEventObject = JSON.parse(
-            localStorage.getItem('stored_Gymtracker_Data'),
-        );
-        // fastingChangeButton!.innerText = `${intervalEventObject.fastingTime}:${intervalEventObject.eatTime}`;
+        storedObj = JSON.parse(localStorage.getItem('stored_Gymtracker_Data'));
+        console.log('Daten geladen');
         try {
-            // waterButton!.innerText = `${intervalEventObject.water.toFixed( 2)} Liter`;
+            exerciseObjArray = storedObj.exercises;
+            for(let i = 0; i < exerciseObjArray.length; i++) {
+                exercises.push(exerciseObjArray[i].name)
+            }
         } catch (err) {
             console.log(err);
         }
+    }else {
+        console.log('Daten wurden nicht geladen');
     }
 }
+
+// Create event listener for all link clicks
+document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        storedObj.clickedExercise = link.innerText;
+        save_LocalStorage();
+        // alert(link.innerText);
+    });
+  });

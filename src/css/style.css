@@ -133,6 +133,7 @@ main h1 {
   right: 10px;
   font-size: 2em;
   color: rgba(5, 217, 250, 0.481);
+  cursor: pointer;
 }
 
 h2 {
@@ -144,9 +145,9 @@ h2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
   padding: 20px;
   margin-top: 20px;
 }
@@ -154,11 +155,13 @@ h2 {
 .newExercise form label {
   color: yellow;
   letter-spacing: 3px;
+  margin: 0 auto;
 }
 
 .newExercise form input {
+  margin: 0 auto;
   width: 150px;
-  border-radius: 10px;
+  border-radius: 5px;
   height: 20px;
   outline: none;
   text-align: center;
