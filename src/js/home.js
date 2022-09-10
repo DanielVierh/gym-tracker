@@ -48,7 +48,3 @@ function load_LocalStorage() {
         }
     }
 }
-
-function feffe() {
-    alert('Feffe');
-}

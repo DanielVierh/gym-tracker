@@ -14,6 +14,7 @@ body {
   padding: 0;
   background-color: rgba(2, 6, 15, 0.953);
   font-family: 'Bebas Neue', sans-serif;
+  text-align: center;
 }
 
 main {
@@ -58,7 +59,8 @@ main h1 {
           align-items: center;
   margin: 20px auto;
   background-color: #181b23;
-  width: 30%;
+  width: 70%;
+  max-width: 400px;
   height: 40px;
   text-decoration: none;
   border-radius: 15px;
@@ -123,5 +125,63 @@ main h1 {
           box-shadow: 0 0 20px turquoise;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+.sticky-add-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 2em;
+  color: rgba(5, 217, 250, 0.481);
+}
+
+h2 {
+  color: rgba(5, 217, 250, 0.481);
+  letter-spacing: 4px;
+}
+
+.newExercise form p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.newExercise form label {
+  color: yellow;
+  letter-spacing: 3px;
+}
+
+.newExercise form input {
+  width: 150px;
+  border-radius: 10px;
+  height: 20px;
+  outline: none;
+  text-align: center;
+}
+
+.newExercise form .submitButton {
+  color: lightgreen;
+  background-color: green;
+  width: 150px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  letter-spacing: 4px;
+  font-size: 1.3em;
+  margin: 50px auto;
+  padding: 5px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,6 +1,5 @@
-$color-teal:rgba(5, 217, 250, 0.481);
-
-
+$color-Primary: rgba(5, 217, 250, 0.481);
+$color-Secondary: yellow;
 
 /* bebas-neue-regular - latin */
 @font-face {
@@ -22,6 +21,7 @@ body {
     padding: 0;
     background-color: rgba(2, 6, 15, 0.953);
     font-family: 'Bebas Neue', sans-serif;
+    text-align: center;
 }
 
 
@@ -45,7 +45,7 @@ main {
     top: 100px;
     left: 15%;
     z-index: -1;
-    text-shadow: 0 0 10px $color-teal;
+    text-shadow: 0 0 10px $color-Primary;
 }
 
 
@@ -56,14 +56,15 @@ main {
     align-items: center;
     margin: 20px auto;
     background-color: rgb(24, 27, 35);
-    width: 30%;
+    width: 70%;
+    max-width: 400px;
     height: 40px;
     text-decoration: none;
     border-radius: 15px;
     color: white;
     padding: 10px;
-    box-shadow: 0 0 15px $color-teal;
-    border: 1px solid $color-teal;
+    box-shadow: 0 0 15px $color-Primary;
+    border: 1px solid $color-Primary;
     letter-spacing: 3px;
     text-align: right;
     cursor: pointer;
@@ -87,7 +88,7 @@ main {
     color: white;
     z-index: 10;
     border-radius: 20px 20px 0 0;
-    border: 1px solid $color-teal;
+    border: 1px solid $color-Primary;
 
 
 
@@ -105,6 +106,61 @@ main {
         &:hover {
             box-shadow: 0 0 20px turquoise;
             transform: scale(1.1);
+        }
+    }
+}
+
+
+.sticky-add-button{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 2em;
+    color: $color-Primary;
+}
+
+
+h2 {
+    color: $color-Primary;
+    letter-spacing: 4px;
+}
+
+
+.newExercise {
+    form {
+
+        p {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        label {
+            color: $color-Secondary;
+            letter-spacing: 3px;
+        }
+
+        input {
+            width: 150px;
+            border-radius: 10px;
+            height: 20px;
+            outline: none;
+            text-align: center;
+        }
+
+        .submitButton {
+            color: lightgreen;
+            background-color: green;
+            width: 150px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            letter-spacing: 4px;
+            font-size: 1.3em;
+            margin: 50px auto;
+            padding: 5px;
         }
     }
 }

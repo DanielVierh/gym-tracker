@@ -61,3 +61,16 @@ function load_LocalStorage() {
         }
     }
 }
+
+
+const nofifyBtn = document.getElementById("notifiBtn");
+
+nofifyBtn.addEventListener("click", ()=> {
+    Notification.requestPermission().then(perm => {
+        if(perm === "granted") {
+            const notification = new Notification("Example notification", {
+                body: "Helloooo World",
+            })
+        }
+    })
+})
