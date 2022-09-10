@@ -5,13 +5,17 @@ let storedObj = {
     statistics: []
 }
 
-
+/**
+ * Anzahl an geschafften Wiederholungen
+ */
 class Exercise {
-    constructor(name, weight, sets, repeats) {
+    constructor(name, weight, sets, repeats, comment, lastTraining) {
         this.name = name;
         this.weight = weight;
         this.sets = sets;
         this.repeats = repeats;
+        this.comment = comment;
+        this.lastTraining = lastTraining;
     }
 }
 
@@ -65,7 +69,7 @@ function saveNewExercise() {
     }
 
     if(inputdataIsOk === true) {
-        const newExercise = new Exercise(exercisename, weight, sets, repeats);
+        const newExercise = new Exercise(exercisename, weight, sets, repeats, '...','');
         storedObj.exercises.push(newExercise);
         save_LocalStorage();
         window.location = "index.html"

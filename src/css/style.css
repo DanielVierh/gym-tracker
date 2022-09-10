@@ -141,33 +141,53 @@ h2 {
   letter-spacing: 4px;
 }
 
-.newExercise form p {
+.newExercise {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-  padding: 20px;
-  margin-top: 20px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.newExercise form label {
+.newExercise p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
+}
+
+.newExercise label {
   color: yellow;
-  letter-spacing: 3px;
-  margin: 0 auto;
+  letter-spacing: 4px;
 }
 
-.newExercise form input {
-  margin: 0 auto;
-  width: 150px;
-  border-radius: 5px;
-  height: 20px;
-  outline: none;
+.newExercise input {
+  width: 100px;
   text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
-.newExercise form .submitButton {
+.newExercise #inpExercise_Name {
+  width: 250px;
+}
+
+.newExercise .submitButton {
   color: lightgreen;
   background-color: green;
   width: 150px;
@@ -186,5 +206,65 @@ h2 {
   font-size: 1.3em;
   margin: 50px auto;
   padding: 5px;
+}
+
+#outpExercise {
+  color: yellow;
+  font-size: 1.8em;
+}
+
+.training {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.training .labelWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5px;
+}
+
+.training label {
+  color: aquamarine;
+  letter-spacing: 4px;
+}
+
+.training input {
+  width: 100px;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.deleteButton {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  color: red;
+  font-size: 1em;
+}
+
+.editButton {
+  position: fixed;
+  top: 10px;
+  left: 15px;
+  color: lightblue;
+  font-size: 1em;
 }
 /*# sourceMappingURL=style.css.map */

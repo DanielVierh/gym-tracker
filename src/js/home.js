@@ -41,6 +41,7 @@ function load_LocalStorage() {
     if (localStorage.getItem('stored_Gymtracker_Data') !== null) {
         storedObj = JSON.parse(localStorage.getItem('stored_Gymtracker_Data'));
         console.log('Daten geladen');
+        console.log(storedObj);
         try {
             exerciseObjArray = storedObj.exercises;
             for(let i = 0; i < exerciseObjArray.length; i++) {

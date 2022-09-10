@@ -10,18 +10,39 @@
 <body>
     <h2 id="outpExercise">Hantelcurls</h2>
 
-    <section class="training">
+    <div class="deleteButton"><i class="fa-regular fa-trash-can"></i></div>
+    <div class="editButton"><i class="fa-solid fa-pencil"></i></div>
 
+    <section class="training">
+        <div class="labelWrapper">
+            <label>Gewicht</label>
+            <input id="inpExercise_Weight">
+        </div>
+
+        <div class="labelWrapper">
+            <label>Sätze</label>
+            <input id="inpExercise_Sets">
+        </div>
+
+        <div class="labelWrapper">
+            <label>Wiederh.</label>
+            <input id="inpExercise_Repeats">
+        </div>
+
+        <div class="labelWrapper">
+            <label>Bemerkung</label>
+            <textarea id="inpExercise_Comments" cols="40" rows="5"></textarea>
+        </div>
     </section>
 
-    <div id="notifiBtn">Click</div>
+    <!-- <div id="notifiBtn">Click</div> -->
 
     <div class="stickyBottomNav">
         <div class="bottomButton" onclick="gotoHome()"><i class="fa-solid fa-dumbbell"></i></div>
         <div class="bottomButton" onclick="gotoStatistic()"><i class="fa-solid fa-chart-column"></i></div>
         <div class="bottomButton" onclick="gotoNewExercise()"><i class="fa-solid fa-square-plus"></i></div>
     </div>
-    <script src="src/js/script.js"></script>
+    <script src="src/js/navigation.js"></script>
     <script src="src/js/exercise.js"></script>
 </body>
 </html>

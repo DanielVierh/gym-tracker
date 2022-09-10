@@ -128,28 +128,32 @@ h2 {
 
 
 .newExercise {
-    form {
+    display: flex;
+    justify-content: start;
+    flex-direction:column;
+
 
         p {
             display: flex;
-            justify-content: end;
-            padding: 20px;
-            margin-top: 20px;
-
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            margin-bottom: 15px;
         }
         label {
-            color: $color-Secondary;
-            letter-spacing: 3px;
-            margin: 0 auto;
+            color: yellow;
+            letter-spacing: 4px;
         }
 
         input {
-            margin: 0 auto;
-            width: 150px;
-            border-radius: 5px;
-            height: 20px;
-            outline: none;
+            width: 100px;
             text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        #inpExercise_Name {
+            width: 250px;
         }
 
         .submitButton {
@@ -166,10 +170,55 @@ h2 {
             margin: 50px auto;
             padding: 5px;
         }
-    }
 }
 
 
-// .button {
+#outpExercise {
+    color: yellow;
+    font-size: 1.8em;
+}
 
-// }
+.training {
+
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .labelWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+    }
+
+    label {
+        color: aquamarine;
+        letter-spacing: 4px;
+    }
+
+    input {
+        width: 100px;
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+}
+
+
+.deleteButton {
+    position: fixed;
+    top: 10px;
+    right: 15px;
+    color: red;
+    font-size: 1em;
+}
+
+.editButton {
+    position: fixed;
+    top: 10px;
+    left: 15px;
+    color: lightblue;
+    font-size: 1em;
+}
