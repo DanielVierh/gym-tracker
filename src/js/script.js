@@ -66,11 +66,21 @@ function load_LocalStorage() {
 const nofifyBtn = document.getElementById("notifiBtn");
 
 nofifyBtn.addEventListener("click", ()=> {
+    speech("Hallo Welt")
     Notification.requestPermission().then(perm => {
         if(perm === "granted") {
             const notification = new Notification("Example notification", {
-                body: "Helloooo World",
+                body: "Hallo Welt",
             })
         }
     })
 })
+
+
+
+
+function speech(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1;
+    speechSynthesis.speak(utterance);
+}
