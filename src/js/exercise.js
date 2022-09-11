@@ -1,4 +1,6 @@
 
+
+
 let storedObj = {
     clickedExercise: 'none',
     exercises: ['Liegestütze','Hantelcurls','Situps','Schulterpresse','Planks',],
@@ -8,6 +10,8 @@ let storedObj = {
 const outpExercise = document.getElementById("outpExercise");
 let exerciseObjArray = [];
 let exercises = [];
+
+
 
 window.onload = init();
 
@@ -31,21 +35,24 @@ function load_LocalStorage() {
             exerciseObjArray = storedObj.exercises;
             let currentExerciseName = '';
             for(let i = 0; i < exerciseObjArray.length; i++) {
-                currentExerciseName = exerciseObjArray[i].name
+                currentExerciseName = exerciseObjArray[i].name;
                 console.log(exerciseObjArray[i].name);
                 if(currentExerciseName === storedObj.clickedExercise) {
                     document.getElementById("inpExercise_Weight").value = exerciseObjArray[i].weight
                     document.getElementById("inpExercise_Sets").value = exerciseObjArray[i].sets
                     document.getElementById("inpExercise_Repeats").value = exerciseObjArray[i].repeats
-                    document.getElementById("inpExercise_Comments").value = exerciseObjArray[i].comment
+                    document.getElementById("inpExercise_Comments").value = exerciseObjArray[i].comment   
+                    createNotification("Los gehts", "info")
                 }
             }
 
         } catch (err) {
             console.log(err);
+            createNotification(err, "alert")
         }
     }else {
         console.log('Daten wurden nicht geladen');
+        createNotification("Daten wurden nicht geladen", "alert")
     }
 }
 
@@ -70,4 +77,25 @@ function speech(text) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 1;
     speechSynthesis.speak(utterance);
+}
+
+
+
+
+// Toast Notification
+function createNotification(message, messageType) {
+    // Erstelle Div
+    const notifi = document.createElement('div');
+    // Füge Klasse hinzu
+    notifi.classList.add('toast'); // Messagebox
+    notifi.classList.add(messageType); // Messagetypes: alert, info, modal, warning, success
+    // Textmessage hinzufügen
+    notifi.innerText = message;
+    // Dem Toastcontainer das erstelle Toast hinzufügen
+    toasts.appendChild(notifi);
+
+    // Nachricht nach festgelegter Zeit wieder entfernen
+    setTimeout(() => {
+        notifi.remove();
+    }, 5000);
 }

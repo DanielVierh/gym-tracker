@@ -222,3 +222,66 @@ h2 {
     color: lightblue;
     font-size: 1em;
 }
+
+
+
+/* Toast Notification */
+/* Der Toastcontainer soll unten rechts fixiert werden */
+#toasts {
+    position: fixed;
+    top: 0px;
+    right: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-radius: 15px;
+    max-height: 200px;
+    width: 100%;
+    overflow-y: auto;
+    transition: transform 0.7s ease;
+    z-index: 1000;
+}
+
+/* Nachrichtenbox (Toast) Styling */
+.toast {
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+    font-size: 1.4em;
+    font-weight: bold;
+    letter-spacing: 4px;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideDown 700ms;
+}
+.toast.alert {
+    background-color: rgb(105, 6, 6);
+    color: white;
+}
+.toast.success {
+    background-color: lightgreen;
+    color: black;
+}
+.toast.info {
+    background-color: lightblue;
+    color: black;
+}
+.toast.warning {
+    background-color: yellow;
+    color: black;
+}
+
+
+@keyframes slideDown {
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: 100px;
+    }
+}
