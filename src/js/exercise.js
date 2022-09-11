@@ -30,11 +30,13 @@ function load_LocalStorage() {
     if (localStorage.getItem('stored_Gymtracker_Data') !== null) {
         storedObj = JSON.parse(localStorage.getItem('stored_Gymtracker_Data'));
         console.log('Daten für Übungen wurden geladen');
+        createNotification("Bin in load Data. Objekt gefunden", "info")
         try {
             outpExercise.innerHTML = storedObj.clickedExercise;
             exerciseObjArray = storedObj.exercises;
             let currentExerciseName = '';
             for(let i = 0; i < exerciseObjArray.length; i++) {
+                createNotification("Bin in Schleife. Suche Objekt", "info")
                 currentExerciseName = exerciseObjArray[i].name;
                 console.log(exerciseObjArray[i].name);
                 if(currentExerciseName === storedObj.clickedExercise) {
@@ -42,16 +44,18 @@ function load_LocalStorage() {
                     document.getElementById("inpExercise_Sets").value = exerciseObjArray[i].sets
                     document.getElementById("inpExercise_Repeats").value = exerciseObjArray[i].repeats
                     document.getElementById("inpExercise_Comments").value = exerciseObjArray[i].comment   
-                    createNotification("Los gehts", "info")
+                    createNotification("Los gehts", "success")
+                    createNotification('Weight: ' + exerciseObjArray[i].weight + ' Sets:' +  exerciseObjArray[i].sets, "info")
+                    break;
                 }
             }
 
         } catch (err) {
             console.log(err);
-            createNotification(err, "alert")
+            createNotification('Error', "alert")
+            createNotification('Error' + err, "alert")
         }
     }else {
-        console.log('Daten wurden nicht geladen');
         createNotification("Daten wurden nicht geladen", "alert")
     }
 }
@@ -97,5 +101,5 @@ function createNotification(message, messageType) {
     // Nachricht nach festgelegter Zeit wieder entfernen
     setTimeout(() => {
         notifi.remove();
-    }, 5000);
+    }, 10000);
 }
