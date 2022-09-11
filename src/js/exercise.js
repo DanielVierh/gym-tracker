@@ -36,9 +36,9 @@ function load_LocalStorage() {
             exerciseObjArray = storedObj.exercises;
             let currentExerciseName = '';
             for(let i = 0; i < exerciseObjArray.length; i++) {
-                createNotification("Bin in Schleife. Suche Objekt", "info")
                 currentExerciseName = exerciseObjArray[i].name;
                 console.log(exerciseObjArray[i].name);
+                createNotification(`currentExerciseName: ${currentExerciseName} vs storedObj.clickedExercise: ${storedObj.clickedExercise}`, "info")
                 if(currentExerciseName === storedObj.clickedExercise) {
                     document.getElementById("inpExercise_Weight").value = exerciseObjArray[i].weight
                     document.getElementById("inpExercise_Sets").value = exerciseObjArray[i].sets
