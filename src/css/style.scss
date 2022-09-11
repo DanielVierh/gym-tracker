@@ -8,13 +8,18 @@ $color-Secondary: yellow;
     font-weight: 400;
     src: url('../fonts/bebas-neue-v9-latin-regular.eot'); /* IE9 Compat Modes */
     src: local(''),
-         url('../fonts/bebas-neue-v9-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('../fonts/bebas-neue-v9-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-         url('../fonts/bebas-neue-v9-latin-regular.woff') format('woff'), /* Modern Browsers */
-         url('../fonts/bebas-neue-v9-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-         url('../fonts/bebas-neue-v9-latin-regular.svg#BebasNeue') format('svg'); /* Legacy iOS */
-  }
-
+        url('../fonts/bebas-neue-v9-latin-regular.eot?#iefix')
+            format('embedded-opentype'),
+        /* IE6-IE8 */ url('../fonts/bebas-neue-v9-latin-regular.woff2')
+            format('woff2'),
+        /* Super Modern Browsers */
+            url('../fonts/bebas-neue-v9-latin-regular.woff') format('woff'),
+        /* Modern Browsers */ url('../fonts/bebas-neue-v9-latin-regular.ttf')
+            format('truetype'),
+        /* Safari, Android, iOS */
+            url('../fonts/bebas-neue-v9-latin-regular.svg#BebasNeue')
+            format('svg'); /* Legacy iOS */
+}
 
 body {
     margin: 0;
@@ -23,7 +28,6 @@ body {
     font-family: 'Bebas Neue', sans-serif;
     text-align: center;
 }
-
 
 main {
     padding: 0 0 70px 0;
@@ -47,8 +51,6 @@ main {
     z-index: -1;
     text-shadow: 0 0 10px $color-Primary;
 }
-
-
 
 .exercise {
     display: flex;
@@ -74,7 +76,6 @@ main {
     }
 }
 
-
 .stickyBottomNav {
     position: fixed;
     bottom: 0;
@@ -90,8 +91,6 @@ main {
     border-radius: 20px 20px 0 0;
     border: 1px solid $color-Primary;
 
-
-
     .bottomButton {
         background-color: rgb(19, 29, 54);
         padding: 14px;
@@ -102,7 +101,7 @@ main {
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: all .5s ease;
+        transition: all 0.5s ease;
         &:hover {
             box-shadow: 0 0 20px turquoise;
             transform: scale(1.1);
@@ -110,8 +109,7 @@ main {
     }
 }
 
-
-.sticky-add-button{
+.sticky-add-button {
     position: fixed;
     top: 10px;
     right: 10px;
@@ -120,58 +118,54 @@ main {
     cursor: pointer;
 }
 
-
 h2 {
     color: $color-Primary;
     letter-spacing: 4px;
 }
 
-
 .newExercise {
     display: flex;
     justify-content: start;
-    flex-direction:column;
+    flex-direction: column;
 
+    p {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    label {
+        color: yellow;
+        letter-spacing: 4px;
+    }
 
-        p {
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        label {
-            color: yellow;
-            letter-spacing: 4px;
-        }
+    input {
+        width: 100px;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
 
-        input {
-            width: 100px;
-            text-align: center;
-            font-size: 1.5em;
-            font-weight: bold;
-        }
+    #inpExercise_Name {
+        width: 250px;
+    }
 
-        #inpExercise_Name {
-            width: 250px;
-        }
-
-        .submitButton {
-            color: lightgreen;
-            background-color: green;
-            width: 150px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            letter-spacing: 4px;
-            font-size: 1.3em;
-            margin: 50px auto;
-            padding: 5px;
-        }
+    .submitButton {
+        color: lightgreen;
+        background-color: green;
+        width: 150px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        letter-spacing: 4px;
+        font-size: 1.3em;
+        margin: 50px auto;
+        padding: 5px;
+    }
 }
-
 
 #outpExercise {
     color: yellow;
@@ -179,7 +173,6 @@ h2 {
 }
 
 .training {
-
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -203,9 +196,7 @@ h2 {
         font-size: 2em;
         font-weight: bold;
     }
-
 }
-
 
 .deleteButton {
     position: fixed;
@@ -222,8 +213,6 @@ h2 {
     color: lightblue;
     font-size: 1em;
 }
-
-
 
 /* Toast Notification */
 /* Der Toastcontainer soll unten rechts fixiert werden */
@@ -276,7 +265,6 @@ h2 {
     color: black;
 }
 
-
 @keyframes slideDown {
     0% {
         height: 0px;
@@ -284,5 +272,102 @@ h2 {
 
     100% {
         height: 100px;
+    }
+}
+
+.stopwatchButton {
+    position: fixed;
+    right: 10px;
+    bottom: 150px;
+    padding: 8px;
+    background-color: black;
+    border-radius: 15px;
+    color: green;
+    font-size: 2em;
+}
+
+.stopwatchArea {
+    display: none;
+
+    &.active {
+        animation: openStopwatch 300ms ease-in-out;
+        position: fixed;
+        right: 10px;
+        bottom: 150px;
+        background-color: black;
+        width: 80%;
+        height: 300px;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: sans-serif;
+        box-shadow: 0 0 15px white;
+
+        .closebutton {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 2.4em;
+        }
+
+        h3 {
+            color: white;
+        }
+
+        .buttonWrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+            .button {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                background-color: rgb(35, 35, 35);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 30px;
+                font-weight: bold;
+                border: 2px solid darkgray;
+
+                &.startbutton {
+                    color: green;
+                }
+
+                &.stoppbutton {
+                    color: red;
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes openStopwatch {
+   0% {
+        width: 10%;
+        height: 10px;
+    }
+
+    100% {
+        width: 70%;
+        height: 300px;
     }
 }

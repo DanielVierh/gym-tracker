@@ -116,8 +116,8 @@ main h1 {
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .stickyBottomNav .bottomButton:hover {
@@ -355,6 +355,144 @@ h2 {
   }
   100% {
     height: 100px;
+  }
+}
+
+.stopwatchButton {
+  position: fixed;
+  right: 10px;
+  bottom: 150px;
+  padding: 8px;
+  background-color: black;
+  border-radius: 15px;
+  color: green;
+  font-size: 2em;
+}
+
+.stopwatchArea {
+  display: none;
+}
+
+.stopwatchArea.active {
+  -webkit-animation: openStopwatch 300ms ease-in-out;
+          animation: openStopwatch 300ms ease-in-out;
+  position: fixed;
+  right: 10px;
+  bottom: 150px;
+  background-color: black;
+  width: 80%;
+  height: 300px;
+  border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  font-family: sans-serif;
+  -webkit-box-shadow: 0 0 15px white;
+          box-shadow: 0 0 15px white;
+}
+
+.stopwatchArea.active .closebutton {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: bold;
+}
+
+.stopwatchArea.active h2 {
+  font-size: 2.4em;
+}
+
+.stopwatchArea.active h3 {
+  color: white;
+}
+
+.stopwatchArea.active .buttonWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.stopwatchArea.active .buttonWrapper .button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #232323;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 30px;
+  font-weight: bold;
+  border: 2px solid darkgray;
+}
+
+.stopwatchArea.active .buttonWrapper .button.startbutton {
+  color: green;
+}
+
+.stopwatchArea.active .buttonWrapper .button.stoppbutton {
+  color: red;
+}
+
+@-webkit-keyframes openStopwatch {
+  0% {
+    width: 10%;
+    height: 10px;
+  }
+  100% {
+    width: 70%;
+    height: 300px;
+  }
+}
+
+@keyframes openStopwatch {
+  0% {
+    width: 10%;
+    height: 10px;
+  }
+  100% {
+    width: 70%;
+    height: 300px;
   }
 }
 /*# sourceMappingURL=style.css.map */

@@ -10,7 +10,16 @@ let storedObj = {
 const outpExercise = document.getElementById("outpExercise");
 let exerciseObjArray = [];
 let exercises = [];
+let stopWatchIsRunning = false;
+let stopWatchTime = 0;
 
+
+const openStopWatch = document.getElementById("btn_Stopwatch");
+const stopWatchArea = document.getElementById("stopwatchArea");
+const closeStopWatch = document.getElementById("btnCloseStopwatch");
+const stopWatchStart = document.getElementById("btnStopWatch_Start");
+const stopWatchStop = document.getElementById("btnStopWatch_Stop");
+const outpStopWatchTime = document.getElementById("outpStopWatchTime");
 
 
 window.onload = init();
@@ -30,7 +39,6 @@ function load_LocalStorage() {
     if (localStorage.getItem('stored_Gymtracker_Data') !== null) {
         storedObj = JSON.parse(localStorage.getItem('stored_Gymtracker_Data'));
         console.log('Daten für Übungen wurden geladen');
-        createNotification("Bin in load Data. Objekt gefunden", "info")
         try {
             outpExercise.innerHTML = storedObj.clickedExercise;
             exerciseObjArray = storedObj.exercises;
@@ -38,22 +46,19 @@ function load_LocalStorage() {
             for(let i = 0; i < exerciseObjArray.length; i++) {
                 currentExerciseName = exerciseObjArray[i].name;
                 console.log(exerciseObjArray[i].name);
-                createNotification(`currentExerciseName: ${currentExerciseName} vs storedObj.clickedExercise: ${storedObj.clickedExercise}`, "info")
                 if(currentExerciseName == storedObj.clickedExercise) {
                     document.getElementById("inpExercise_Weight").value = exerciseObjArray[i].weight
                     document.getElementById("inpExercise_Sets").value = exerciseObjArray[i].sets
                     document.getElementById("inpExercise_Repeats").value = exerciseObjArray[i].repeats
-                    document.getElementById("inpExercise_Comments").value = exerciseObjArray[i].comment   
-                    createNotification("Los gehts", "success")
-                    createNotification('Weight: ' + exerciseObjArray[i].weight + ' Sets:' +  exerciseObjArray[i].sets, "info")
+                    document.getElementById("inpExercise_Comments").value = exerciseObjArray[i].comment
                     break;
                 }
             }
 
         } catch (err) {
             console.log(err);
-            createNotification('Error', "alert")
-            createNotification('Error' + err, "alert")
+            // createNotification('Error', "alert")
+            // createNotification('Error' + err, "alert")
         }
     }else {
         createNotification("Daten wurden nicht geladen", "alert")
@@ -102,4 +107,52 @@ function createNotification(message, messageType) {
     setTimeout(() => {
         notifi.remove();
     }, 10000);
+}
+
+
+// Stoppuhr
+openStopWatch.addEventListener("click", ()=> {
+    stopWatchArea.classList.add("active");
+});
+
+closeStopWatch.addEventListener("click", ()=> {
+    stopWatchIsRunning = false;
+    stopWatchTime = 0;
+    stopWatchStart.style.boxShadow = 'none';
+    btnStopWatch_Stop.style.boxShadow = 'none';
+    secIntoTime();
+    stopWatchArea.classList.remove("active");
+});
+
+stopWatchStart.addEventListener("click", ()=> {
+    stopWatchIsRunning = true;
+    stopWatchStart.style.boxShadow = '0 0 15px green';
+    btnStopWatch_Stop.style.boxShadow = 'none';
+});
+
+btnStopWatch_Stop.addEventListener("click", ()=> {
+    stopWatchIsRunning = false;
+    stopWatchStart.style.boxShadow = 'none';
+    btnStopWatch_Stop.style.boxShadow = '0 0 15px red';
+});
+
+
+setInterval(() => {
+    updateStopWatch()
+}, 1000);
+
+function updateStopWatch() {
+    if(stopWatchIsRunning === true) {
+        stopWatchTime ++;
+        secIntoTime()
+    }
+}
+
+
+
+function secIntoTime(){
+    let date = new Date(null);
+    date.setSeconds(stopWatchTime);
+    const result = date.toISOString().substr(11, 8);
+    outpStopWatchTime.innerHTML = result;
 }
