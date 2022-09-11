@@ -39,7 +39,7 @@ function load_LocalStorage() {
                 currentExerciseName = exerciseObjArray[i].name;
                 console.log(exerciseObjArray[i].name);
                 createNotification(`currentExerciseName: ${currentExerciseName} vs storedObj.clickedExercise: ${storedObj.clickedExercise}`, "info")
-                if(currentExerciseName === storedObj.clickedExercise) {
+                if(currentExerciseName == storedObj.clickedExercise) {
                     document.getElementById("inpExercise_Weight").value = exerciseObjArray[i].weight
                     document.getElementById("inpExercise_Sets").value = exerciseObjArray[i].sets
                     document.getElementById("inpExercise_Repeats").value = exerciseObjArray[i].repeats
