@@ -120,13 +120,17 @@ openStopWatch.addEventListener("click", ()=> {
 });
 
 closeStopWatch.addEventListener("click", ()=> {
+    closeTheStopWatch()
+});
+
+function closeTheStopWatch() {
     stopWatchIsRunning = false;
     stopWatchTime = 0;
     stopWatchStart.style.boxShadow = 'none';
     btnStopWatch_Stop.style.boxShadow = 'none';
     secIntoTime();
     stopWatchArea.classList.remove("active");
-});
+}
 
 stopWatchStart.addEventListener("click", ()=> {
     stopWatchIsRunning = true;
@@ -141,14 +145,22 @@ btnStopWatch_Stop.addEventListener("click", ()=> {
 });
 
 btnSaveStoppedTime.addEventListener("click", ()=> {
-    const trackedTime = secIntoTime();
-    const date = new Date();
-    const pureDate = splitVal(date + '','GMT', 0);  
-    const oldValue = storedObj.exercises[exerciseIndex].comment;
-    const spacer = '\n ---- \n';
-    const newValue = `Deine letzte Zeit war: ${trackedTime}`;
-    storedObj.exercises[exerciseIndex].comment = pureDate + ': \n' +  newValue + spacer + oldValue;
-    save_LocalStorage()
+    const request = window.confirm("Möchtest du die Zeit speichern?")
+    if(request) {
+        const trackedTime = secIntoTime();
+        const date = new Date();
+        const pureDate = splitVal(date + '','GMT', 0);  
+        const oldValue = storedObj.exercises[exerciseIndex].comment;
+        const spacer = '\n ---- \n';
+        const newValue = `Deine letzte Zeit war: ${trackedTime}`;
+        storedObj.exercises[exerciseIndex].comment = pureDate + ': \n' +  newValue + spacer + oldValue;
+        save_LocalStorage();
+        closeTheStopWatch();
+        createNotification("Zeit wurde gespeichert", "success");
+        setTimeout(() => {
+            location.reload();
+        }, 4000);
+    }
 })
 
 
