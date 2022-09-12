@@ -3,7 +3,7 @@
 
 let storedObj = {
     clickedExercise: 'none',
-    exercises: ['Liegestütze','Hantelcurls','Situps','Schulterpresse','Planks',],
+    exercises: [],
     statistics: []
 }
 
@@ -12,6 +12,7 @@ let exerciseObjArray = [];
 let exercises = [];
 let stopWatchIsRunning = false;
 let stopWatchTime = 0;
+let exerciseIndex = -1;
 
 
 const openStopWatch = document.getElementById("btn_Stopwatch");
@@ -20,6 +21,8 @@ const closeStopWatch = document.getElementById("btnCloseStopwatch");
 const stopWatchStart = document.getElementById("btnStopWatch_Start");
 const stopWatchStop = document.getElementById("btnStopWatch_Stop");
 const outpStopWatchTime = document.getElementById("outpStopWatchTime");
+const btnSaveStoppedTime = document.getElementById("btnSaveStoppedTime");
+const btnDeleteExercise = document.getElementById("btnDeleteExercise");
 
 
 window.onload = init();
@@ -46,11 +49,12 @@ function load_LocalStorage() {
             for(let i = 0; i < exerciseObjArray.length; i++) {
                 currentExerciseName = exerciseObjArray[i].name;
                 console.log(exerciseObjArray[i].name);
-                if(currentExerciseName == storedObj.clickedExercise) {
+                if(currentExerciseName === storedObj.clickedExercise) {
                     document.getElementById("inpExercise_Weight").value = exerciseObjArray[i].weight
                     document.getElementById("inpExercise_Sets").value = exerciseObjArray[i].sets
                     document.getElementById("inpExercise_Repeats").value = exerciseObjArray[i].repeats
                     document.getElementById("inpExercise_Comments").value = exerciseObjArray[i].comment
+                    exerciseIndex = i;                    
                     break;
                 }
             }
@@ -136,6 +140,17 @@ btnStopWatch_Stop.addEventListener("click", ()=> {
     btnStopWatch_Stop.style.boxShadow = '0 0 15px red';
 });
 
+btnSaveStoppedTime.addEventListener("click", ()=> {
+    const trackedTime = secIntoTime();
+    const date = new Date();
+    const pureDate = splitVal(date + '','GMT', 0);  
+    const oldValue = storedObj.exercises[exerciseIndex].comment;
+    const spacer = '\n ---- \n';
+    const newValue = `Deine letzte Zeit war: ${trackedTime}`;
+    storedObj.exercises[exerciseIndex].comment = pureDate + ': \n' +  newValue + spacer + oldValue;
+    save_LocalStorage()
+})
+
 
 setInterval(() => {
     updateStopWatch()
@@ -155,4 +170,24 @@ function secIntoTime(){
     date.setSeconds(stopWatchTime);
     const result = date.toISOString().substr(11, 8);
     outpStopWatchTime.innerHTML = result;
+    return result;
 }
+
+
+function splitVal(val, marker, pos) {
+    const elem = val.split(marker);
+    const retVal = elem[pos];
+    return retVal;
+}
+
+
+
+// Delete Exercise
+btnDeleteExercise.addEventListener("click", ()=> {
+    const request = window.confirm("Soll diese Übung wirklich gelöscht werden?")
+    if(request) {
+        storedObj.exercises.splice(exerciseIndex, 1);
+        save_LocalStorage();
+        window.location = 'index.html';
+    }
+})
