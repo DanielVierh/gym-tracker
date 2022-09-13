@@ -39,6 +39,7 @@ function saveNewExercise() {
     if(document.getElementById("inpExercise_Name").value !== "") {
         if(document.getElementById("inpExercise_Name").value !== " ") {
             exercisename = document.getElementById("inpExercise_Name").value;
+            exercisename = exercisename.trim();
             inputdataIsOk = true;
             if(exercises.includes(exercisename)) {
                 alert("Die Übung existiert bereits")

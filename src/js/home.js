@@ -21,11 +21,7 @@ function loadExercise() {
     for (let i = 0; i < exercises.length; i++) {
         const exercise = document.createElement('a');
         exercise.classList.add('exercise');
-        // const icon = document.createElement('span');
-        // icon.classList.add('fa-solid');
-        // icon.classList.add('fa-circle-chevron-right');
         exercise.innerHTML = exercises[i] + ' ';
-        // exercise.appendChild(icon);
         exercise.href = 'exercise.html';
         trainingswrapper.appendChild(exercise);
     }
