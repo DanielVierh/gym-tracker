@@ -23,7 +23,9 @@ const stopWatchStop = document.getElementById("btnStopWatch_Stop");
 const outpStopWatchTime = document.getElementById("outpStopWatchTime");
 const btnSaveStoppedTime = document.getElementById("btnSaveStoppedTime");
 const btnDeleteExercise = document.getElementById("btnDeleteExercise");
-
+const lblCounter = document.getElementById("lblCounter");
+const btnStart = document.getElementById("btnStart");
+const lblevent = document.getElementById("lblevent");
 
 window.onload = init();
 
@@ -203,3 +205,80 @@ btnDeleteExercise.addEventListener("click", ()=> {
         window.location = 'index.html';
     }
 })
+
+const countdownTime = 10;
+const trainingTime = 30;
+const pauseTime = 30;
+let countdownLifecycle = 0;
+let counter = -1;
+
+// Starte Übung
+function startExercise() {
+        // Initial Countdown
+    speech(`Dein Training beginnt in ${countdownTime} Sekunden. Mach dich bereit`);
+    
+    setTimeout(() => {
+        btnStart.style.display = 'none';
+        countdownLifecycle = 1;
+        counter = countdownTime;
+        lblCounter.innerHTML = counter;
+        lblevent.style.display = 'block';
+        lblevent.innerHTML = 'Countdown';
+    }, 5000);
+}
+
+
+
+
+setInterval(() => {
+    if(countdownLifecycle === 1 && counter >= 0) {
+        counter --;
+        lblCounter.innerHTML = counter;
+
+        if(counter > 0 && counter < 5) {
+            speech(counter)
+        }
+    }
+    if(counter === 0) {
+        if(countdownLifecycle === 1) {
+            speech("Los gehts")
+            lblevent.innerHTML = 'Training'
+            countdownLifecycle ++;
+            counter = trainingTime;
+        }
+    }
+    if(countdownLifecycle === 2 && counter > 0) {
+        counter --;
+        lblCounter.innerHTML = counter;
+
+        if(counter > 0 && counter < 5) {
+            speech(counter)
+        }
+        if(counter === 0) {
+            if(countdownLifecycle === 2) {
+                speech(`Übung beendet. Ab jetzt ${pauseTime} Sekunden Pause.`)
+                countdownLifecycle ++;
+                counter = pauseTime;
+                lblevent.innerHTML = 'Pause'
+            }
+        }
+    }
+    if(countdownLifecycle === 3 && counter > 0) {
+        counter --;
+        lblCounter.innerHTML = counter;
+
+        if(counter > 0 && counter < 5) {
+            speech(counter)
+        }
+
+        if(counter === 0) {
+            if(countdownLifecycle === 3) {
+                speech("Fertig")
+                btnStart.style.display = 'block';
+                lblCounter.style.display = 'none';
+                lblevent.style.display = 'none';
+            }
+        }
+    }
+}, 1000);
+

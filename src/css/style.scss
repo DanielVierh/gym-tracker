@@ -385,3 +385,41 @@ h2 {
         height: 300px;
     }
 }
+
+
+
+.startButton {
+    width: 50%;
+    height: 50px;
+    color: rgba(0, 0, 0, 0.63);
+    background-color: turquoise;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border-radius: 15px;
+    margin: 50px auto;
+    letter-spacing: 2px;
+    box-shadow: 0 0 20px turquoise, inset 0 0 10px white;
+    border: 1px solid lightblue;
+    transition: transform .4s ease;
+    cursor: pointer;
+
+    &:active {
+        transform: scale(.9);
+    }
+
+}
+
+.counter {
+    font-size: 8em;
+    color: turquoise;
+    margin: 0 auto 50px auto;
+}
+
+.event {
+    color: turquoise;
+    font-family: sans-serif;
+    font-size: 2em;
+    display: none;
+}

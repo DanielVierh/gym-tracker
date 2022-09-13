@@ -515,4 +515,50 @@ h2 {
     height: 300px;
   }
 }
+
+.startButton {
+  width: 50%;
+  height: 50px;
+  color: rgba(0, 0, 0, 0.63);
+  background-color: turquoise;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.5em;
+  border-radius: 15px;
+  margin: 50px auto;
+  letter-spacing: 2px;
+  -webkit-box-shadow: 0 0 20px turquoise, inset 0 0 10px white;
+          box-shadow: 0 0 20px turquoise, inset 0 0 10px white;
+  border: 1px solid lightblue;
+  -webkit-transition: -webkit-transform .4s ease;
+  transition: -webkit-transform .4s ease;
+  transition: transform .4s ease;
+  transition: transform .4s ease, -webkit-transform .4s ease;
+  cursor: pointer;
+}
+
+.startButton:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.counter {
+  font-size: 8em;
+  color: turquoise;
+  margin: 0 auto 50px auto;
+}
+
+.event {
+  color: turquoise;
+  font-family: sans-serif;
+  font-size: 2em;
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */
