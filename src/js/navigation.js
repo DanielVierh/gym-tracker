@@ -27,6 +27,10 @@ function gotoNewExercise() {
     window.location = "newExercise.html";
 }
 
+function gotoSettings() {
+    window.location = "settings.html";
+}
+
 
 // Toast Notification
 function createNotification(message, messageType) {
@@ -45,4 +49,3 @@ function createNotification(message, messageType) {
         notifi.remove();
     }, 5000);
 }
-

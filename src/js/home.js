@@ -26,7 +26,7 @@ function loadExercise() {
     for (let i = 0; i < exercises.length; i++) {
         const exercise = document.createElement('a');
         exercise.classList.add('exercise');
-        exercise.innerHTML = exercises[i] + ' ';
+        exercise.innerHTML = exercises[i];
         exercise.href = 'exercise.html';
         trainingswrapper.appendChild(exercise);
     }

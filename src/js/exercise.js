@@ -353,21 +353,3 @@ function setCurrentExercise() {
     console.log(storedObj.currentTraining);
     save_LocalStorage();
 }
-
-// ! Löscht den Local Storage
-function resetLocalStorage() {
-    const deleteRequest = window.confirm('Soll alles gelöscht werden?');
-    if (deleteRequest) {
-        storedObj = {
-            clickedExercise: 'none',
-            exercises: [],
-            statistics: [],
-            activeTraining: false,
-            currentTraining: [],
-        };
-        save_LocalStorage();
-        window.location = 'index.html';
-    }
-}
-
-// resetLocalStorage();

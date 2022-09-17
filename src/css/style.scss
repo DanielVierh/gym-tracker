@@ -74,6 +74,10 @@ main {
     span {
         margin-left: 10px;
     }
+
+    &.active {
+        background-color: aquamarine;
+    }
 }
 
 .stickyBottomNav {
@@ -469,4 +473,16 @@ h2 {
         align-items: center;
         font-size: 2em;
     }
+}
+
+
+.buttonDelete {
+    color: white;
+    background-color: rgb(99, 0, 0);
+    width: 70%;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 1.3em;
+    font-family: sans-serif;
+    margin: 0 auto;
 }

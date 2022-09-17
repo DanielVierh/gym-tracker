@@ -78,6 +78,10 @@ main h1 {
   margin-left: 10px;
 }
 
+.exercise.active {
+  background-color: aquamarine;
+}
+
 .stickyBottomNav {
   position: fixed;
   bottom: 0;
@@ -615,5 +619,16 @@ h2 {
       -ms-flex-align: center;
           align-items: center;
   font-size: 2em;
+}
+
+.buttonDelete {
+  color: white;
+  background-color: #630000;
+  width: 70%;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 1.3em;
+  font-family: sans-serif;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=style.css.map */
