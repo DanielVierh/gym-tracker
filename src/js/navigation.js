@@ -4,9 +4,13 @@ const maintitle = document.getElementById("maintitle");
 window.addEventListener("scroll", ()=>{
     let scrollHeigth = Math.floor(window.pageYOffset)
     if(scrollHeigth > 100) {
+        if(maintitle) {
         maintitle.classList.add("sticky-top");
+        }
     }else{
-        maintitle.classList.remove("sticky-top");
+        if(maintitle) {
+            maintitle.classList.remove("sticky-top");
+        }
     }
 });
 

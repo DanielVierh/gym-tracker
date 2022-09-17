@@ -561,4 +561,16 @@ h2 {
   font-size: 2em;
   display: none;
 }
+
+.historyWrapper {
+  width: 95%;
+  height: auto;
+  border: 1px solid turquoise;
+  border-radius: 15px;
+  margin: 50px auto 150px;
+}
+
+.historyWrapper p {
+  color: lime;
+}
 /*# sourceMappingURL=style.css.map */

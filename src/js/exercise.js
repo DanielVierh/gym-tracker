@@ -215,10 +215,10 @@ let counter = -1;
 // Starte Übung
 function startExercise() {
         // Initial Countdown
+    btnStart.style.display = 'none';
     speech(`Dein Training beginnt in ${countdownTime} Sekunden. Mach dich bereit`);
     
     setTimeout(() => {
-        btnStart.style.display = 'none';
         countdownLifecycle = 1;
         counter = countdownTime;
         lblCounter.innerHTML = counter;
@@ -274,9 +274,7 @@ setInterval(() => {
         if(counter === 0) {
             if(countdownLifecycle === 3) {
                 speech("Fertig")
-                btnStart.style.display = 'block';
-                lblCounter.style.display = 'none';
-                lblevent.style.display = 'none';
+                location.reload();
             }
         }
     }
