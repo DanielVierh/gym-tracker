@@ -4,7 +4,7 @@
 let storedObj = {
     clickedExercise: 'none',
     exercises: [],
-    statistics: []
+    statistics: [],
 }
 
 const outpExercise = document.getElementById("outpExercise");
@@ -50,21 +50,18 @@ function load_LocalStorage() {
             let currentExerciseName = '';
             for(let i = 0; i < exerciseObjArray.length; i++) {
                 currentExerciseName = exerciseObjArray[i].name;
-                console.log(exerciseObjArray[i].name);
                 if(currentExerciseName === storedObj.clickedExercise) {
                     document.getElementById("inpExercise_Weight").value = exerciseObjArray[i].weight
                     document.getElementById("inpExercise_Sets").value = exerciseObjArray[i].sets
                     document.getElementById("inpExercise_Repeats").value = exerciseObjArray[i].repeats
                     document.getElementById("inpExercise_Comments").value = exerciseObjArray[i].comment
-                    exerciseIndex = i;                    
+                    exerciseIndex = i;
                     break;
                 }
             }
 
         } catch (err) {
             console.log(err);
-            // createNotification('Error', "alert")
-            // createNotification('Error' + err, "alert")
         }
     }else {
         createNotification("Daten wurden nicht geladen", "alert")
@@ -151,7 +148,7 @@ btnSaveStoppedTime.addEventListener("click", ()=> {
     if(request) {
         const trackedTime = secIntoTime();
         const date = new Date();
-        const pureDate = splitVal(date + '','GMT', 0);  
+        const pureDate = splitVal(date + '','GMT', 0);
         const oldValue = storedObj.exercises[exerciseIndex].comment;
         const spacer = '\n ---- \n';
         const newValue = `Deine letzte Zeit war: ${trackedTime}`;
@@ -217,7 +214,7 @@ function startExercise() {
         // Initial Countdown
     btnStart.style.display = 'none';
     speech(`Dein Training beginnt in ${countdownTime} Sekunden. Mach dich bereit`);
-    
+
     setTimeout(() => {
         countdownLifecycle = 1;
         counter = countdownTime;
@@ -279,4 +276,3 @@ setInterval(() => {
         }
     }
 }, 1000);
-
