@@ -1,9 +1,14 @@
 const trainingswrapper = document.getElementById('trainingswrapper');
+const btnFinishExercise = document.getElementById("btnFinishExercise");
+
+let isActiveTraining = false;
 
 let storedObj = {
     clickedExercise: 'none',
     exercises: [],
-    statistics: []
+    statistics: [],
+    activeTraining: false,
+    currentTraining: [],
 }
 
 let exerciseObjArray = [];
@@ -43,6 +48,12 @@ function load_LocalStorage() {
             for(let i = 0; i < exerciseObjArray.length; i++) {
                 exercises.push(exerciseObjArray[i].name)
             }
+
+            isActiveTraining = storedObj.activeTraining;
+            if(isActiveTraining === true) {
+                btnFinishExercise.classList.add("active");
+            }
+
         } catch (err) {
             console.log(err);
         }
@@ -51,7 +62,7 @@ function load_LocalStorage() {
     }
 }
 
-// Create event listener for all link clicks
+// ? Create event listener for all link clicks
 document.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         storedObj.clickedExercise = link.innerText;
@@ -59,3 +70,24 @@ document.querySelectorAll('a').forEach(link => {
         // alert(link.innerText);
     });
   });
+
+
+// ? Laufendes Training beenden
+  btnFinishExercise.addEventListener("click", ()=> {
+    const finishRequest = window.confirm("Training beenden?");
+    if(finishRequest) {
+        btnFinishExercise.classList.remove("active");
+        storedObj.activeTraining = false;
+        save_LocalStorage();
+        const saveRequest = window.confirm("Soll dein Training gespeichert werden?");
+        if(saveRequest) {
+
+            //todo Training speichern
+            console.log('Training wurde gespeichert');
+
+            storedObj.currentTraining = [];
+
+            save_LocalStorage();
+        }
+    }
+  })

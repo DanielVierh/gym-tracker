@@ -2,7 +2,9 @@
 let storedObj = {
     clickedExercise: 'none',
     exercises: [],
-    statistics: []
+    statistics: [],
+    activeTraining: false,
+    currentTraining: [],
 }
 
 /**
