@@ -81,7 +81,16 @@ document.querySelectorAll('a').forEach(link => {
         save_LocalStorage();
         const saveRequest = window.confirm("Soll dein Training gespeichert werden?");
         if(saveRequest) {
+            const now = new Date();
+            const startTime = storedObj.currentTraining[0];
+            
+            const endTime = now.getTime();
 
+            const differenz = endTime - startTime;
+
+            const trainingsTime = msToTime(differenz)
+
+            console.log(`trainingsTime: ${trainingsTime}`);
             //todo Training speichern
             console.log('Training wurde gespeichert');
 
@@ -91,3 +100,21 @@ document.querySelectorAll('a').forEach(link => {
         }
     }
   })
+
+  function msToTime(s) {
+    var ms = s % 1000;
+    s = (s - ms) / 1000;
+    var secs = s % 60;
+    s = (s - secs) / 60;
+    var mins = s % 60;
+    var hrs = (s - mins) / 60;
+  
+    return addZero(hrs) + ':' + addZero(mins) + ':' + addZero(secs) + '.' + addZero(ms);
+  }
+
+  function addZero(num) {
+      if(num < 10) {
+          num = `0${num}`
+      }
+      return num
+  }

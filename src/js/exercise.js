@@ -170,9 +170,6 @@ function getDateAndTimeString() {
     let output = String(date2.getDate()).padStart(2, '0') + '.' + String(date2.getMonth() + 1).padStart(2, '0') + '.' + date2.getFullYear();
     const pureDate = splitVal(date + '', 'GMT', 0);
     const wochentag = weekday(splitVal(pureDate + '', ' ', 0 ))
-    const month = splitVal(pureDate + '', ' ', 1 )
-    const day = splitVal(pureDate + '', ' ', 2 )
-    const year = splitVal(pureDate + '', ' ', 3 )
     const time = splitVal(pureDate + '', ' ', 4 )
 
     return `${wochentag} ${output} - ${time}`;
@@ -328,7 +325,9 @@ function setCurrentExercise() {
     // Checken ob training gerade angefangen hat
     if (storedObj.activeTraining === false) {
         storedObj.activeTraining = true;
-        const startTime = new Date();
+        const now = new Date();
+        const startTime = now.getTime();
+        console.log(`Now: ${startTime}`);
         storedObj.currentTraining.push(startTime)
     } else {
         // Suche, ob diese Übung bereits abgeschlossen wurde

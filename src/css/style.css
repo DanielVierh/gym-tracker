@@ -210,6 +210,7 @@ h2 {
   font-size: 1.3em;
   margin: 50px auto;
   padding: 5px;
+  cursor: pointer;
 }
 
 #outpExercise {
@@ -453,6 +454,7 @@ h2 {
       -ms-flex-pack: center;
           justify-content: center;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .stopwatchArea.active h2 {
@@ -630,5 +632,14 @@ h2 {
   font-size: 1.3em;
   font-family: sans-serif;
   margin: 0 auto;
+  border: 1px solid #f39090;
+  cursor: pointer;
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
+}
+
+.buttonDelete:hover {
+  -webkit-box-shadow: 0 0 30px #ff3939;
+          box-shadow: 0 0 30px #ff3939;
 }
 /*# sourceMappingURL=style.css.map */

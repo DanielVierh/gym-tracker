@@ -168,6 +168,7 @@ h2 {
         font-size: 1.3em;
         margin: 50px auto;
         padding: 5px;
+        cursor: pointer;
     }
 }
 
@@ -341,6 +342,7 @@ h2 {
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            cursor: pointer;
         }
 
         h2 {
@@ -485,4 +487,11 @@ h2 {
     font-size: 1.3em;
     font-family: sans-serif;
     margin: 0 auto;
+    border: 1px solid rgb(243, 144, 144);
+    cursor: pointer;
+    transition: .4s ease;
+
+    &:hover {
+        box-shadow: 0 0 30px rgb(255, 57, 57);
+    }
 }
