@@ -72,7 +72,7 @@ function saveNewExercise() {
     }
 
     if(inputdataIsOk === true) {
-        const newExercise = new Exercise(exercisename, weight, sets, repeats, '...','');
+        const newExercise = new Exercise(exercisename, weight, sets, repeats, '...',[]);
         storedObj.exercises.push(newExercise);
         save_LocalStorage();
         window.location = "index.html"

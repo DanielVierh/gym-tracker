@@ -12,7 +12,7 @@ let storedObj = {
 }
 
 let exerciseObjArray = [];
-let exercises = [];
+let exercisesAll = [];
 
 window.onload = init();
 
@@ -31,10 +31,10 @@ class ExerciseStatistik {
 
 //  Erstelle dynamisch Übungen
 function loadExercise() {
-    for (let i = 0; i < exercises.length; i++) {
+    for (let i = 0; i < exercisesAll.length; i++) {
         const exercise = document.createElement('a');
         exercise.classList.add('exercise');
-        exercise.innerHTML = exercises[i];
+        exercise.innerHTML = exercisesAll[i];
         exercise.href = 'exercise.html';
         trainingswrapper.appendChild(exercise);
     }
@@ -54,7 +54,7 @@ function load_LocalStorage() {
         try {
             exerciseObjArray = storedObj.exercises;
             for(let i = 0; i < exerciseObjArray.length; i++) {
-                exercises.push(exerciseObjArray[i].name)
+                exercisesAll.push(exerciseObjArray[i].name)
             }
 
             isActiveTraining = storedObj.activeTraining;
@@ -94,18 +94,28 @@ document.querySelectorAll('a').forEach(link => {
             const endTime = now.getTime();
             const differenz = endTime - startTime;
             const trainingsTime = msToTime(differenz)
-
-            //todo Training speichern
-            console.log('Training wurde gespeichert');
             const trainingsdate = storedObj.currentTraining[1];
             let exercises = []
+            console.log(exercisesAll);
+            let exerciseindex = -1;
             for(let i = 2; i < storedObj.currentTraining.length; i++) {
                 exercises.push(storedObj.currentTraining[i])
+                exerciseindex = -1
+                for(let j = 0; j < exercisesAll.length; j++) {
+                    console.log(storedObj.currentTraining[i].exerciseName + ' vs ' + exercisesAll[j]);
+                    exerciseindex++;
+                    if(storedObj.currentTraining[i].exerciseName === exercisesAll[j]) {
+                        let lastTraining = new ExerciseStatistik(trainingsdate,trainingsTime,storedObj.currentTraining[i])
+                        storedObj.exercises[exerciseindex].lastTraining.push(lastTraining);
+                        break;
+                    }
+                }
+
             }
             const training = new ExerciseStatistik(trainingsdate,trainingsTime,exercises)
             storedObj.statistics.push(training)
             save_LocalStorage();
-            console.log(training);
+            console.log(storedObj);
             storedObj.currentTraining = [];
             save_LocalStorage();
         }

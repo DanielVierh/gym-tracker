@@ -8,6 +8,7 @@ let storedObj = {
 
 const outpExercise = document.getElementById('outpExercise');
 let exerciseObjArray = [];
+let statisticObjArray = [];
 let exercises = [];
 let stopWatchIsRunning = false;
 let stopWatchTime = 0;
@@ -26,6 +27,7 @@ const btnDeleteExercise = document.getElementById('btnDeleteExercise');
 const lblCounter = document.getElementById('lblCounter');
 const btnStart = document.getElementById('btnStart');
 const lblevent = document.getElementById('lblevent');
+const trainingswrapper = document.getElementById("trainingswrapper");
 
 window.onload = init();
 
@@ -80,9 +82,11 @@ function load_LocalStorage() {
                     document.getElementById('inpExercise_Comments').value =
                         exerciseObjArray[i].comment;
                     exerciseIndex = i;
+                    statisticObjArray = exerciseObjArray[i].lastTraining;
                     break;
                 }
             }
+            loadTrainings();
         } catch (err) {
             console.log(err);
         }
@@ -250,6 +254,7 @@ let counter = -1;
 // Starte Übung
 function startExercise() {
     // Initial Countdown
+    setCurrentExercise();
     btnStart.style.display = 'none';
     speech(
         `Dein Training beginnt in ${countdownTime} Sekunden. Mach dich bereit`,
@@ -290,7 +295,6 @@ setInterval(() => {
         }
         if (counter === 0) {
             if (countdownLifecycle === 2) {
-                setCurrentExercise();
                 speech(`Übung beendet. Ab jetzt ${pauseTime} Sekunden Pause.`);
                 countdownLifecycle++;
                 counter = pauseTime;
@@ -351,4 +355,27 @@ function setCurrentExercise() {
     }
     console.log(storedObj.currentTraining);
     save_LocalStorage();
+}
+
+
+
+
+function loadTrainings() {
+    console.log(statisticObjArray);
+    
+    for(let i = statisticObjArray.length - 1; i > -1; i--) {
+        let trainingdiv = document.createElement('div')
+        trainingdiv.classList.add('trainingResultbox')
+        let trainingsdate = document.createElement('h2');
+        trainingsdate.innerHTML = statisticObjArray[i].date;
+        let exercisesdiv = document.createElement('div');
+        trainingdiv.appendChild(trainingsdate)
+        let values = document.createElement('p');
+        const text = `Gewicht: ${statisticObjArray[i].exercises.weight} | Wiederholungen: ${statisticObjArray[i].exercises.repeats} | Abgeschlossene Sätze: ${statisticObjArray[i].exercises.finishedSets} \n `
+        values.innerHTML = text;
+        exercisesdiv.appendChild(values);
+        trainingdiv.appendChild(exercisesdiv);
+        trainingswrapper.appendChild(trainingdiv);
+    }
+    
 }
