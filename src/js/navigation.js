@@ -1,18 +1,18 @@
 
 // sticky-top
 const maintitle = document.getElementById("maintitle");
-window.addEventListener("scroll", ()=>{
-    let scrollHeigth = Math.floor(window.pageYOffset)
-    if(scrollHeigth > 100) {
-        if(maintitle) {
-        maintitle.classList.add("sticky-top");
-        }
-    }else{
-        if(maintitle) {
-            maintitle.classList.remove("sticky-top");
-        }
-    }
-});
+// window.addEventListener("scroll", ()=>{
+//     let scrollHeigth = Math.floor(window.pageYOffset)
+//     if(scrollHeigth > 0) {
+//         if(maintitle) {
+//         maintitle.classList.add("sticky-top");
+//         }
+//     }else{
+//         if(maintitle) {
+//             maintitle.classList.remove("sticky-top");
+//         }
+//     }
+// });
 
 
 function gotoHome() {
