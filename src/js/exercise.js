@@ -250,7 +250,6 @@ let counter = -1;
 // Starte Übung
 function startExercise() {
     // Initial Countdown
-    setCurrentExercise();
     btnStart.style.display = 'none';
     speech(
         `Dein Training beginnt in ${countdownTime} Sekunden. Mach dich bereit`,
@@ -291,6 +290,7 @@ setInterval(() => {
         }
         if (counter === 0) {
             if (countdownLifecycle === 2) {
+                setCurrentExercise();
                 speech(`Übung beendet. Ab jetzt ${pauseTime} Sekunden Pause.`);
                 countdownLifecycle++;
                 counter = pauseTime;
@@ -327,8 +327,8 @@ function setCurrentExercise() {
         storedObj.activeTraining = true;
         const now = new Date();
         const startTime = now.getTime();
-        console.log(`Now: ${startTime}`);
-        storedObj.currentTraining.push(startTime)
+        storedObj.currentTraining.push(startTime);
+        storedObj.currentTraining.push(getDateAndTimeString())
     } else {
         // Suche, ob diese Übung bereits abgeschlossen wurde
         for (let i = 0; i < storedObj.currentTraining.length; i++) {

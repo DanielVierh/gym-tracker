@@ -621,6 +621,7 @@ h2 {
       -ms-flex-align: center;
           align-items: center;
   font-size: 2em;
+  cursor: pointer;
 }
 
 .buttonDelete {

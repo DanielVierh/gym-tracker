@@ -21,6 +21,14 @@ function init() {
     loadExercise();
 }
 
+class ExerciseStatistik {
+    constructor(date, trainingstime, exercises) {
+        this.date = date;
+        this.trainingstime = trainingstime;
+        this.exercises = exercises;
+    }
+}
+
 //  Erstelle dynamisch Übungen
 function loadExercise() {
     for (let i = 0; i < exercises.length; i++) {
@@ -83,19 +91,22 @@ document.querySelectorAll('a').forEach(link => {
         if(saveRequest) {
             const now = new Date();
             const startTime = storedObj.currentTraining[0];
-            
             const endTime = now.getTime();
-
             const differenz = endTime - startTime;
-
             const trainingsTime = msToTime(differenz)
 
-            console.log(`trainingsTime: ${trainingsTime}`);
             //todo Training speichern
             console.log('Training wurde gespeichert');
-
+            const trainingsdate = storedObj.currentTraining[1];
+            let exercises = []
+            for(let i = 2; i < storedObj.currentTraining.length; i++) {
+                exercises.push(storedObj.currentTraining[i])
+            }
+            const training = new ExerciseStatistik(trainingsdate,trainingsTime,exercises)
+            storedObj.statistics.push(training)
+            save_LocalStorage();
+            console.log(training);
             storedObj.currentTraining = [];
-
             save_LocalStorage();
         }
     }
