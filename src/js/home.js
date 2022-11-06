@@ -17,8 +17,17 @@ let exercisesAll = [];
 window.onload = init();
 
 function init() {
+    checkServiceWorker();
     load_LocalStorage();
     loadExercise();
+}
+
+function checkServiceWorker() {
+    if("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("serviceWorker.js", { scope: "/"})
+        .then(()=>  console.log('ServiceWorker geladen'))
+        .catch((error) => console.warn(error))
+    }
 }
 
 class ExerciseStatistik {
