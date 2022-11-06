@@ -24,7 +24,7 @@ function init() {
 
 function checkServiceWorker() {
     if("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("serviceWorker.js", { scope: "/"})
+        navigator.serviceWorker.register("/gym-tracker/serviceWorker.js", { scope: "/gym-tracker/"})
         .then(()=>  console.log('ServiceWorker geladen'))
         .catch((error) => console.warn(error))
     }
