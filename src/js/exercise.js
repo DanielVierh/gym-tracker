@@ -93,7 +93,7 @@ function load_LocalStorage() {
             console.log(err);
         }
     } else {
-        func.createNotification('Daten wurden nicht geladen', 'alert');
+        func.createNotification('Daten wurden nicht geladen', 'alert', 5000);
     }
 }
 
@@ -145,7 +145,7 @@ btnSaveStoppedTime.addEventListener('click', () => {
         getDateAndTimeString() + ': \n' + newValue + spacer + oldValue;
         save_LocalStorage();
         closeTheStopWatch();
-        func.createNotification('Zeit wurde gespeichert', 'success');
+        func.createNotification('Zeit wurde gespeichert', 'success', 3000);
         setTimeout(() => {
             location.location = 'index.html';
         }, 4000);

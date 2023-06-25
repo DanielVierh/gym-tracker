@@ -7,7 +7,7 @@ const addZero = (num)=> {
 }
 
 // Toast Notification
-const createNotification = (message, messageType) => {
+const createNotification = (message, messageType, display_time) => {
     // Erstelle Div
     const notifi = document.createElement('div');
     // Füge Klasse hinzu
@@ -21,7 +21,7 @@ const createNotification = (message, messageType) => {
     // Nachricht nach festgelegter Zeit wieder entfernen
     setTimeout(() => {
         notifi.remove();
-    }, 10000);
+    }, display_time);
 }
 
 const splitVal = (val, marker, pos) => {

@@ -11,7 +11,7 @@ let exercisesAll = [];
 window.onload = () => {
     load_LocalStorage();
     loadExercise();
-    func.createNotification("Hallo Sportsfreund","success")
+    func.createNotification("Hallo Sportsfreund","success", 5000)
 }
 
 class ExerciseStatistik {
