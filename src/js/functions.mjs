@@ -1,27 +1,13 @@
-
-// sticky-top
-const maintitle = document.getElementById("maintitle");
-
-
-function gotoHome() {
-    window.location = "index.html";
+// Add a 0 to a number under 10
+const addZero = (num)=> {
+    if(num < 10) {
+        num = `0${num}`
+    }
+    return num
 }
-
-function gotoStatistic() {
-    window.location = "statistic.html";
-}
-
-function gotoNewExercise() {
-    window.location = "newExercise.html";
-}
-
-function gotoSettings() {
-    window.location = "settings.html";
-}
-
 
 // Toast Notification
-function createNotification(message, messageType) {
+const createNotification = (message, messageType) => {
     // Erstelle Div
     const notifi = document.createElement('div');
     // Füge Klasse hinzu
@@ -35,5 +21,14 @@ function createNotification(message, messageType) {
     // Nachricht nach festgelegter Zeit wieder entfernen
     setTimeout(() => {
         notifi.remove();
-    }, 5000);
+    }, 10000);
 }
+
+const splitVal = (val, marker, pos) => {
+    const elem = val.split(marker);
+    const retVal = elem[pos];
+    return retVal;
+}
+
+
+export { addZero, createNotification, splitVal }

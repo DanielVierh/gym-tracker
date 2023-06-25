@@ -1,3 +1,5 @@
+import * as func from './functions.mjs';
+
 let storedObj = {
     clickedExercise: 'none',
     exercises: [],
@@ -91,7 +93,7 @@ function load_LocalStorage() {
             console.log(err);
         }
     } else {
-        createNotification('Daten wurden nicht geladen', 'alert');
+        func.createNotification('Daten wurden nicht geladen', 'alert');
     }
 }
 
@@ -99,24 +101,6 @@ function speech(text) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 1;
     speechSynthesis.speak(utterance);
-}
-
-// Toast Notification
-function createNotification(message, messageType) {
-    // Erstelle Div
-    const notifi = document.createElement('div');
-    // Füge Klasse hinzu
-    notifi.classList.add('toast'); // Messagebox
-    notifi.classList.add(messageType); // Messagetypes: alert, info, modal, warning, success
-    // Textmessage hinzufügen
-    notifi.innerText = message;
-    // Dem Toastcontainer das erstelle Toast hinzufügen
-    toasts.appendChild(notifi);
-
-    // Nachricht nach festgelegter Zeit wieder entfernen
-    setTimeout(() => {
-        notifi.remove();
-    }, 10000);
 }
 
 // Stoppuhr
@@ -161,7 +145,7 @@ btnSaveStoppedTime.addEventListener('click', () => {
         getDateAndTimeString() + ': \n' + newValue + spacer + oldValue;
         save_LocalStorage();
         closeTheStopWatch();
-        createNotification('Zeit wurde gespeichert', 'success');
+        func.createNotification('Zeit wurde gespeichert', 'success');
         setTimeout(() => {
             location.location = 'index.html';
         }, 4000);

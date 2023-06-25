@@ -1,24 +1,17 @@
+import * as func from './functions.mjs';
+
 const trainingswrapper = document.getElementById('trainingswrapper');
 const btnFinishExercise = document.getElementById("btnFinishExercise");
-
 let isActiveTraining = false;
-
-let storedObj = {
-    clickedExercise: 'none',
-    exercises: [],
-    statistics: [],
-    activeTraining: false,
-    currentTraining: [],
-}
-
+let storedObj;
 let exerciseObjArray = [];
 let exercisesAll = [];
 
-window.onload = init();
-
-function init() {
+// Init
+window.onload = () => {
     load_LocalStorage();
     loadExercise();
+    func.createNotification("Hallo Sportsfreund","success")
 }
 
 class ExerciseStatistik {
@@ -75,7 +68,6 @@ document.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         storedObj.clickedExercise = link.innerText;
         save_LocalStorage();
-        // alert(link.innerText);
     });
   });
 
@@ -130,12 +122,5 @@ document.querySelectorAll('a').forEach(link => {
     var mins = s % 60;
     var hrs = (s - mins) / 60;
   
-    return addZero(hrs) + ':' + addZero(mins) + ':' + addZero(secs) + '.' + addZero(ms);
-  }
-
-  function addZero(num) {
-      if(num < 10) {
-          num = `0${num}`
-      }
-      return num
+    return func.addZero(hrs) + ':' + func.addZero(mins) + ':' + func.addZero(secs) + '.' + func.addZero(ms);
   }
