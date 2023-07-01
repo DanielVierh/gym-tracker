@@ -346,7 +346,7 @@ function setCurrentExercise() {
 
 function loadTrainings() {
     console.log(statisticObjArray);
-    
+
     for(let i = statisticObjArray.length - 1; i > -1; i--) {
         let trainingdiv = document.createElement('div')
         trainingdiv.classList.add('trainingResultbox')
@@ -361,5 +361,5 @@ function loadTrainings() {
         trainingdiv.appendChild(exercisesdiv);
         trainingswrapper.appendChild(trainingdiv);
     }
-    
+
 }

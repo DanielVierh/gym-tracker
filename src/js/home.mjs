@@ -11,7 +11,7 @@ let exercisesAll = [];
 window.onload = () => {
     load_LocalStorage();
     loadExercise();
-    func.createNotification("Hallo Sportsfreund","success", 5000)
+   // func.createNotification("Begrüßung","success", 5000)
 }
 
 class ExerciseStatistik {
@@ -121,6 +121,6 @@ document.querySelectorAll('a').forEach(link => {
     s = (s - secs) / 60;
     var mins = s % 60;
     var hrs = (s - mins) / 60;
-  
+
     return func.addZero(hrs) + ':' + func.addZero(mins) + ':' + func.addZero(secs) + '.' + func.addZero(ms);
   }
